@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FoodDeliveryApp.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers"
+    xmlns:controls="clr-namespace:FoodDeliveryApp.Controls"
+    xmlns:models="clr-namespace:FoodDeliveryApp.Models"
+    xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:tabs="http://sharpnado.com"
+    xmlns:vm="clr-namespace:FoodDeliveryApp.ViewModels"
+    x:DataType="vm:HomePageViewModel"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:HomePageViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="0">
+        <Grid Padding="15,10" ColumnDefinitions="*,Auto">
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label
+                    FontFamily="MDI"
+                    FontSize="30"
+                    Text="{x:Static Icons:MaterialDesignIcons.MapMarkerRadius}"
+                    TextColor="{StaticResource Primary}"
+                    VerticalOptions="Center" />
+                <StackLayout Spacing="0" VerticalOptions="Center">
+                    <Label
+                        FontFamily="GilRegular"
+                        FontSize="15"
+                        Text="Delivery To"
+                        TextColor="{StaticResource MistBlue}" />
+                    <Label TextColor="{StaticResource ChineseBlack}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="GilSemiBold"
+                                    FontSize="17"
+                                    Text="Banaseree, B-Block" />
+                                <Span Text="   " />
+                                <Span
+                                    FontFamily="IIC"
+                                    FontSize="20"
+                                    Text="{x:Static Icons:IonicIcons.IosArrowDown}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <pv:PancakeView
+                Grid.Column="1"
+                Padding="5"
+                VerticalOptions="Center">
+                <Label
+                    FontFamily="PI"
+                    FontSize="25"
+                    Text="{x:Static Icons:PrimeIcons.Bag}"
+                    TextColor="Black" />
+            </pv:PancakeView>
+        </Grid>
+        <BoxView
+            Grid.Row="1"
+            Margin="0"
+            BackgroundColor="{StaticResource MistBlue}"
+            HeightRequest="1"
+            Opacity="0.2" />
+        <ScrollView Grid.Row="2" Margin="0">
+            <Grid
+                BackgroundColor="#F5F5F5"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                RowSpacing="0">
+                <pv:PancakeView BackgroundColor="White">
+                    <pv:PancakeView
+                        Margin="15,10"
+                        Padding="10,2"
+                        BackgroundColor="#F2F3F2"
+                        CornerRadius="6">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Label
+                                Padding="5"
+                                FontFamily="PI"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static Icons:PrimeIcons.Search}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                Placeholder="Search food and Kitchen"
+                                PlaceholderColor="Gray" />
+                            <BoxView
+                                Grid.Column="2"
+                                BackgroundColor="#DEDEDE"
+                                HeightRequest="30"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                WidthRequest="1" />
+                            <Button
+                                Grid.Column="2"
+                                BackgroundColor="Transparent"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                WidthRequest="40">
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        FontFamily="PI"
+                                        Glyph="{x:Static Icons:PrimeIcons.Filter}"
+                                        Size="20"
+                                        Color="{StaticResource Primary}" />
+                                </Button.ImageSource>
+                            </Button>
+                        </Grid>
+                    </pv:PancakeView>
+                </pv:PancakeView>
+
+
+                <pv:PancakeView Grid.Row="1" BackgroundColor="White">
+                    <ScrollView
+                        Margin="15,10"
+                        Padding="0,10"
+                        Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" Spacing="5">
+                            <StackLayout WidthRequest="80">
+                                <pv:PancakeView
+                                    Padding="0"
+                                    CornerRadius="100"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="50">
+                                    <Image
+                                        HorizontalOptions="Center"
+                                        Source="egg"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50" />
+                                </pv:PancakeView>
+                                <Label
+                                    FontFamily="GilSemiBold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Breakfast"
+                                    TextColor="{StaticResource ChineseBlack}" />
+                            </StackLayout>
+
+                            <StackLayout WidthRequest="80">
+                                <pv:PancakeView
+                                    Padding="0"
+                                    CornerRadius="100"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="50">
+                                    <Image
+                                        HorizontalOptions="Center"
+                                        Source="hotdog"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50" />
+                                </pv:PancakeView>
+                                <Label
+                                    FontFamily="GilSemiBold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Healthy"
+                                    TextColor="{StaticResource ChineseBlack}" />
+                            </StackLayout>
+
+                            <StackLayout WidthRequest="80">
+                                <pv:PancakeView
+                                    Padding="0"
+                                    CornerRadius="100"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="50">
+                                    <Image
+                                        HorizontalOptions="Center"
+                                        Source="donut"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50" />
+                                </pv:PancakeView>
+                                <Label
+                                    FontFamily="GilSemiBold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Dessert"
+                                    TextColor="{StaticResource ChineseBlack}" />
+                            </StackLayout>
+                            <StackLayout WidthRequest="80">
+                                <pv:PancakeView
+                                    Padding="0"
+                                    CornerRadius="100"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="50">
+                                    <Image
+                                        HorizontalOptions="Center"
+                                        Source="burger"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50" />
+                                </pv:PancakeView>
+                                <Label
+                                    FontFamily="GilSemiBold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Meal"
+                                    TextColor="{StaticResource ChineseBlack}" />
+                            </StackLayout>
+                            <StackLayout WidthRequest="80">
+                                <pv:PancakeView
+                                    Padding="0"
+                                    CornerRadius="100"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="50">
+                                    <Image
+                                        HorizontalOptions="Center"
+                                        Source="pizza"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50" />
+                                </pv:PancakeView>
+                                <Label
+                                    FontFamily="GilSemiBold"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Pizza"
+                                    TextColor="{StaticResource ChineseBlack}" />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ScrollView>
+                </pv:PancakeView>
+                <StackLayout
+                    Grid.Row="2"
+                    Margin="0,10"
+                    Padding="0,15"
+                    BackgroundColor="White"
+                    Spacing="0">
+                    <CarouselView
+                        HeightRequest="170"
+                        IndicatorView="indicatorView"
+                        ItemsSource="{Binding Banners}"
+                        Loop="False"
+                        PeekAreaInsets="25"
+                        VerticalOptions="Start">
+
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Banner">
+                                <Frame
+                                    Padding="0,0,5,0"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="200">
+                                    <Image Aspect="AspectFit" Source="{Binding Image}" />
+                                </Frame>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+
+                    </CarouselView>
+                    <IndicatorView
+                        x:Name="indicatorView"
+                        HorizontalOptions="Center"
+                        IndicatorColor="LightGray"
+                        SelectedIndicatorColor="Black">
+                        <IndicatorView.IndicatorTemplate>
+                            <DataTemplate>
+                                <BoxView
+                                    CornerRadius="20"
+                                    HeightRequest="8"
+                                    WidthRequest="8">
+                                    <BoxView.Triggers>
+                                        <Trigger TargetType="BoxView" Property="BackgroundColor" Value="Black">
+                                            <Setter Property="WidthRequest" Value="20" />
+                                        </Trigger>
+                                    </BoxView.Triggers>
+                                </BoxView>
+                            </DataTemplate>
+                        </IndicatorView.IndicatorTemplate>
+                        <!--  Here add the block explained above  -->
+                    </IndicatorView>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="3"
+                    Padding="0,10"
+                    BackgroundColor="White"
+                    Spacing="0">
+                    <Grid Padding="15,0" ColumnDefinitions="7*,3*">
+                        <Label
+                            FontFamily="GilBold"
+                            FontSize="18"
+                            Text="Kitchen Near You"
+                            TextColor="{StaticResource ChineseBlack}" />
+
+                        <IndicatorView
+                            x:Name="indicatorKitchenView"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            IndicatorColor="LightGray"
+                            SelectedIndicatorColor="Black"
+                            VerticalOptions="Center">
+                            <IndicatorView.IndicatorTemplate>
+                                <DataTemplate>
+                                    <BoxView
+                                        Margin="5,0"
+                                        CornerRadius="20"
+                                        HeightRequest="8"
+                                        WidthRequest="8">
+                                        <!--<BoxView.Triggers>
+                                            <Trigger TargetType="BoxView" Property="BackgroundColor" Value="Black">
+                                                <Setter Property="WidthRequest" Value="20" />
+                                            </Trigger>
+                                        </BoxView.Triggers>-->
+                                    </BoxView>
+                                </DataTemplate>
+                            </IndicatorView.IndicatorTemplate>
+                            <!--  Here add the block explained above  -->
+                        </IndicatorView>
+                    </Grid>
+                    <CarouselView
+                        HeightRequest="250"
+                        IndicatorView="indicatorKitchenView"
+                        ItemsSource="{Binding Kitchens}"
+                        Loop="False"
+                        PeekAreaInsets="20"
+                        VerticalOptions="Start">
+                        <CarouselView.ItemsLayout>
+                            <LinearItemsLayout
+                                ItemSpacing="0"
+                                Orientation="Horizontal"
+                                SnapPointsAlignment="End"
+                                SnapPointsType="Mandatory" />
+                        </CarouselView.ItemsLayout>
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Kitchen">
+                                <controls:KitchenView
+                                    ImagePath="{Binding Image}"
+                                    KName="{Binding Name}"
+                                    Rating="{Binding Rating}"
+                                    SellerImage="{Binding SellerImage}" />
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="4"
+                    Margin="0,10"
+                    Padding="0,10"
+                    BackgroundColor="White"
+                    Spacing="0">
+                    <Grid Padding="15,0" ColumnDefinitions="7*,3*">
+                        <Label
+                            FontFamily="GilBold"
+                            FontSize="18"
+                            Text="Featured Seller"
+                            TextColor="{StaticResource ChineseBlack}" />
+
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            Orientation="Horizontal">
+                            <Label
+                                FontFamily="GilSemiBold"
+                                Text="See All"
+                                TextColor="{StaticResource ChineseBlack}"
+                                VerticalOptions="Center" />
+                            <pv:PancakeView
+                                BackgroundColor="{StaticResource Primary}"
+                                CornerRadius="30"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontFamily="MDI"
+                                    FontSize="18"
+                                    Text="{x:Static Icons:MaterialDesignIcons.ChevronRight}"
+                                    TextColor="White" />
+                            </pv:PancakeView>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout
+                        Padding="0,10"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="1">
+                        <StackLayout WidthRequest="100">
+                            <pv:PancakeView
+                                Padding="0"
+                                CornerRadius="100"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True"
+                                WidthRequest="50">
+                                <Image
+                                    HorizontalOptions="Center"
+                                    Source="chef1"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50" />
+                            </pv:PancakeView>
+                            <Label
+                                FontFamily="GilSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Devon Lane"
+                                TextColor="{StaticResource ChineseBlack}" />
+                        </StackLayout>
+
+                        <StackLayout WidthRequest="100">
+                            <pv:PancakeView
+                                Padding="0"
+                                CornerRadius="100"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True"
+                                WidthRequest="50">
+                                <Image
+                                    HorizontalOptions="Center"
+                                    Source="chef2"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50" />
+                            </pv:PancakeView>
+                            <Label
+                                FontFamily="GilSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Jerome bell"
+                                TextColor="{StaticResource ChineseBlack}" />
+                        </StackLayout>
+
+                        <StackLayout WidthRequest="100">
+                            <pv:PancakeView
+                                Padding="0"
+                                CornerRadius="100"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True"
+                                WidthRequest="50">
+                                <Image
+                                    HorizontalOptions="Center"
+                                    Source="chef3"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50" />
+                            </pv:PancakeView>
+                            <Label
+                                FontFamily="GilSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Floyd Miles"
+                                TextColor="{StaticResource ChineseBlack}" />
+                        </StackLayout>
+
+                        <StackLayout WidthRequest="100">
+                            <pv:PancakeView
+                                Padding="0"
+                                CornerRadius="100"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                IsClippedToBounds="True"
+                                WidthRequest="50">
+                                <Image
+                                    HorizontalOptions="Center"
+                                    Source="chef4"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50" />
+                            </pv:PancakeView>
+                            <Label
+                                FontFamily="GilSemiBold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Jane Cooper"
+                                TextColor="{StaticResource ChineseBlack}" />
+                        </StackLayout>
+
+
+
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Row="5"
+                    BackgroundColor="White"
+                    Spacing="0">
+                    <Label
+                        Margin="15,10,0,0"
+                        FontFamily="GilBold"
+                        FontSize="18"
+                        Text="Meals Nearby"
+                        TextColor="{StaticResource ChineseBlack}" />
+                    <CollectionView
+                        FlowDirection="LeftToRight"
+                        HeightRequest="280"
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding Meals}"
+                        VerticalOptions="Start">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Meal">
+                                <controls:MealView
+                                    MImage="{Binding Image}"
+                                    MName="{Binding Name}"
+                                    MPrice="{Binding Price}"
+                                    MRating="{Binding Rating}" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+
+
+
+            </Grid>
+        </ScrollView>
+        <Grid Grid.Row="3">
+            <StackLayout
+                Padding="10,15"
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
+                <StackLayout
+                    Padding="10,0"
+                    HorizontalOptions="Center"
+                    Spacing="3">
+                    <Label
+                        FontFamily="IIC"
+                        FontSize="22"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static Icons:IonicIcons.IosBasket}" />
+                    <Label
+                        FontFamily="GilMedium"
+                        FontSize="17"
+                        HorizontalTextAlignment="Center"
+                        Text="Cart" />
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

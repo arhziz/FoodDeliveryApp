@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="FoodDeliveryApp.Controls.MealView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers"
+    xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <Frame
+        Padding="0"
+        HasShadow="False"
+        HeightRequest="250"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="320">
+        <pv:PancakeView
+            Margin="8,5"
+            BackgroundColor="White"
+            CornerRadius="20"
+            HorizontalOptions="Center"
+            Shadow="{pv:ShadowMarkup Color=Black,
+                                     BlurRadius=1,
+                                     Offset='0,0',
+                                     Opacity=1}">
+            <Grid RowDefinitions="7*,3*" RowSpacing="0">
+                <pv:PancakeView BackgroundColor="Black">
+                    <Grid>
+                        <Image
+                            x:Name="MealImage"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Fill"
+                            Source="sushi" />
+                        <pv:PancakeView
+                            Margin="15"
+                            Padding="10"
+                            BackgroundColor="White"
+                            CornerRadius="20"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
+                            <StackLayout Orientation="Horizontal" Spacing="1">
+                                <Label
+                                    FontFamily="GilBold"
+                                    FontSize="13"
+                                    Text="$"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalTextAlignment="End" />
+                                <Label
+                                    x:Name="MealPrice"
+                                    FontFamily="GilBold"
+                                    FontSize="15"
+                                    Text="10.65"
+                                    TextColor="{StaticResource ChineseBlack}"
+                                    VerticalTextAlignment="Center" />
+
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            Margin="15"
+                            BackgroundColor="White"
+                            CornerRadius="40"
+                            HeightRequest="40"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            WidthRequest="40">
+                            <Button BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource
+                                        FontFamily="MDI"
+                                        Glyph="{x:Static Icons:MaterialDesignIcons.Heart}"
+                                        Size="26"
+                                        Color="{StaticResource Primary}" />
+                                </Button.ImageSource>
+                            </Button>
+                        </pv:PancakeView>
+                    </Grid>
+                </pv:PancakeView>
+                <StackLayout
+                    Grid.Row="1"
+                    Padding="15,10"
+                    VerticalOptions="Center">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <StackLayout Spacing="1">
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    x:Name="MealName"
+                                    FontFamily="GilBold"
+                                    FontSize="17"
+                                    Text="Aliva Kitchen"
+                                    TextColor="{StaticResource ChineseBlack}" />
+
+                            </StackLayout>
+                            <Label VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontFamily="MDI"
+                                            FontSize="17"
+                                            Text="{x:Static Icons:MaterialDesignIcons.BicycleCargo}"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Span Text="  " />
+                                        <Span
+                                            FontFamily="GilSemiBold"
+                                            FontSize="12"
+                                            Text="$5"
+                                            TextColor="Gray" />
+                                        <Span Text=" " />
+                                        <Span
+                                            FontFamily="GilSemiBold"
+                                            FontSize="12"
+                                            Text="Delivery Fee"
+                                            TextColor="Gray" />
+                                        <Span Text="  " />
+                                        <Span
+                                            FontFamily="MDI"
+                                            FontSize="13"
+                                            Text="{x:Static Icons:MaterialDesignIcons.ClockTimeFour}"
+                                            TextColor="Gray" />
+                                        <Span Text="  " />
+                                        <Span
+                                            FontFamily="GilMedium"
+                                            FontSize="12"
+                                            Text="10-15 mins"
+                                            TextColor="Gray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal"
+                            Spacing="1"
+                            VerticalOptions="Start">
+                            <Label
+                                x:Name="MealRating"
+                                FontFamily="GilBold"
+                                FontSize="15"
+                                Text="4.5"
+                                TextColor="{StaticResource ChineseBlack}" />
+                            <Label
+                                FontFamily="MDI"
+                                FontSize="13"
+                                Text="{x:Static Icons:MaterialDesignIcons.Star}"
+                                TextColor="{StaticResource PaleOrange}"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontFamily="GilMedium"
+                                FontSize="12"
+                                Text="(25+)"
+                                TextColor="{StaticResource ChineseBlack}" />
+                        </StackLayout>
+                    </Grid>
+
+                </StackLayout>
+            </Grid>
+        </pv:PancakeView>
+    </Frame>
+</ContentView>

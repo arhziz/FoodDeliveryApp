@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDeliveryApp.App"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             >
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PaleOrange">#FEAC56</Color>
+            <Color x:Key="Primary">#37BD6B</Color>
+            <Color x:Key="ChineseBlack">#171215</Color>
+            <Color x:Key="MistBlue">#6A6D7C</Color>
+            <Color x:Key="MistBlueFade">#596A6D7C</Color>
+
+
+            <Style TargetType="pv:PancakeView" x:Key="PVLabel">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="0,5"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="Padding" Value="18,7"/>
+            </Style>
+            <Style TargetType="pv:PancakeView" x:Key="ActiveLabel">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="Padding" Value="18,7"/>
+                <Setter Property="Margin" Value="0,5"/>
+            </Style>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>

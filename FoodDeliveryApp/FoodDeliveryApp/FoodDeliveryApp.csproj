@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\GIlroy\Gilroy-Bold.ttf" />
+    <None Remove="Resources\Fonts\GIlroy\Gilroy-Medium.ttf" />
+    <None Remove="Resources\Fonts\GIlroy\Gilroy-Regular.ttf" />
+    <None Remove="Resources\Fonts\GIlroy\Gilroy-SemiBold.ttf" />
+    <None Remove="Resources\Fonts\Ionic\ionicons.ttf" />
+    <None Remove="Resources\Fonts\MDI\materialdesignicons-webfont.ttf" />
+    <None Remove="Resources\Fonts\Prime\primeicons.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\GIlroy\Gilroy-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\GIlroy\Gilroy-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\GIlroy\Gilroy-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\GIlroy\Gilroy-SemiBold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Ionic\ionicons.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\MDI\materialdesignicons-webfont.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Prime\primeicons.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Sharpnado.Tabs" Version="2.2.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />  
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\KitchenView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\MealView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\StartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
