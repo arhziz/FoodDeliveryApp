@@ -5,66 +5,85 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers"
     xmlns:controls="clr-namespace:FoodDeliveryApp.Controls"
+    xmlns:effects="clr-namespace:FoodDeliveryApp.CustomRenderer"
     xmlns:models="clr-namespace:FoodDeliveryApp.Models"
     xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:tabs="http://sharpnado.com"
     xmlns:vm="clr-namespace:FoodDeliveryApp.ViewModels"
+    x:Name="RootPage"
     x:DataType="vm:HomePageViewModel"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="Animated">
 
     <ContentPage.BindingContext>
         <vm:HomePageViewModel />
     </ContentPage.BindingContext>
-    <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="0">
-        <Grid Padding="15,10" ColumnDefinitions="*,Auto">
-            <StackLayout Orientation="Horizontal" Spacing="10">
-                <Label
-                    FontFamily="MDI"
-                    FontSize="30"
-                    Text="{x:Static Icons:MaterialDesignIcons.MapMarkerRadius}"
-                    TextColor="{StaticResource Primary}"
-                    VerticalOptions="Center" />
-                <StackLayout Spacing="0" VerticalOptions="Center">
+    <AbsoluteLayout>
+        <!--<BoxView
+            AbsoluteLayout.LayoutBounds="0,0,1,0.03"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="LightGray"
+            HeightRequest="25" />-->
+        <pv:PancakeView
+            x:Name="TopBar"
+            AbsoluteLayout.LayoutBounds="0,0"
+            WidthRequest="{Binding Source={x:Reference RootPage}, Path=Width}">
+            <Grid Padding="15,10" ColumnDefinitions="*,Auto">
+                <StackLayout Orientation="Horizontal" Spacing="10">
                     <Label
-                        FontFamily="GilRegular"
-                        FontSize="15"
-                        Text="Delivery To"
-                        TextColor="{StaticResource MistBlue}" />
-                    <Label TextColor="{StaticResource ChineseBlack}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span
-                                    FontFamily="GilSemiBold"
-                                    FontSize="17"
-                                    Text="Banaseree, B-Block" />
-                                <Span Text="   " />
-                                <Span
-                                    FontFamily="IIC"
-                                    FontSize="20"
-                                    Text="{x:Static Icons:IonicIcons.IosArrowDown}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                        FontFamily="MDI"
+                        FontSize="30"
+                        Text="{x:Static Icons:MaterialDesignIcons.MapMarkerRadius}"
+                        TextColor="{StaticResource Primary}"
+                        VerticalOptions="Center" />
+                    <StackLayout Spacing="0" VerticalOptions="Center">
+                        <Label
+                            FontFamily="GilRegular"
+                            FontSize="15"
+                            Text="Delivery To"
+                            TextColor="{StaticResource MistBlue}" />
+                        <Label TextColor="{StaticResource ChineseBlack}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontFamily="GilSemiBold"
+                                        FontSize="17"
+                                        Text="Banaseree, B-Block" />
+                                    <Span Text="   " />
+                                    <Span
+                                        FontFamily="IIC"
+                                        FontSize="20"
+                                        Text="{x:Static Icons:IonicIcons.IosArrowDown}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-            <pv:PancakeView
-                Grid.Column="1"
-                Padding="5"
-                VerticalOptions="Center">
-                <Label
-                    FontFamily="PI"
-                    FontSize="25"
-                    Text="{x:Static Icons:PrimeIcons.Bag}"
-                    TextColor="Black" />
-            </pv:PancakeView>
-        </Grid>
+                <pv:PancakeView
+                    Grid.Column="1"
+                    Padding="5"
+                    VerticalOptions="Center">
+                    <Label
+                        FontFamily="PI"
+                        FontSize="25"
+                        Text="{x:Static Icons:PrimeIcons.Bag}"
+                        TextColor="Black" />
+                </pv:PancakeView>
+            </Grid>
+        </pv:PancakeView>
         <BoxView
-            Grid.Row="1"
             Margin="0"
+            AbsoluteLayout.LayoutBounds="0,65"
             BackgroundColor="{StaticResource MistBlue}"
             HeightRequest="1"
-            Opacity="0.2" />
-        <ScrollView Grid.Row="2" Margin="0">
+            Opacity="0.2"
+            WidthRequest="{Binding Source={x:Reference RootPage}, Path=Width}" />
+        <ScrollView
+            x:Name="TheScroll"
+            Margin="0"
+            AbsoluteLayout.LayoutBounds="0,66,1,0.8"
+            AbsoluteLayout.LayoutFlags="SizeProportional"
+            HeightRequest="500"
+            WidthRequest="{Binding Source={x:Reference RootPage}, Path=Width}">
             <Grid
                 BackgroundColor="#F5F5F5"
                 RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
@@ -72,7 +91,7 @@
                 <pv:PancakeView BackgroundColor="White">
                     <pv:PancakeView
                         Margin="15,10"
-                        Padding="10,2"
+                        Padding="8,2"
                         BackgroundColor="#F2F3F2"
                         CornerRadius="6">
                         <Grid ColumnDefinitions="Auto,*,Auto">
@@ -88,7 +107,12 @@
                                 Grid.Column="1"
                                 FontFamily="GilSemiBold"
                                 Placeholder="Search food and Kitchen"
-                                PlaceholderColor="Gray" />
+                                PlaceholderColor="Gray"
+                                TextColor="Gray">
+                                <Entry.Effects>
+                                    <effects:CustomEntry />
+                                </Entry.Effects>
+                            </Entry>
                             <BoxView
                                 Grid.Column="2"
                                 BackgroundColor="#DEDEDE"
@@ -99,14 +123,15 @@
                             <Button
                                 Grid.Column="2"
                                 BackgroundColor="Transparent"
+                                Clicked="FilterBtn_Clicked"
                                 HeightRequest="40"
                                 HorizontalOptions="Center"
                                 WidthRequest="40">
                                 <Button.ImageSource>
                                     <FontImageSource
-                                        FontFamily="PI"
-                                        Glyph="{x:Static Icons:PrimeIcons.Filter}"
-                                        Size="20"
+                                        FontFamily="MDI"
+                                        Glyph="{x:Static Icons:MaterialDesignIcons.TuneVariant}"
+                                        Size="27"
                                         Color="{StaticResource Primary}" />
                                 </Button.ImageSource>
                             </Button>
@@ -278,7 +303,9 @@
                                 </BoxView>
                             </DataTemplate>
                         </IndicatorView.IndicatorTemplate>
+
                         <!--  Here add the block explained above  -->
+
                     </IndicatorView>
                 </StackLayout>
                 <StackLayout
@@ -307,15 +334,19 @@
                                         CornerRadius="20"
                                         HeightRequest="8"
                                         WidthRequest="8">
-                                        <!--<BoxView.Triggers>
+
+                                        <BoxView.Triggers>
                                             <Trigger TargetType="BoxView" Property="BackgroundColor" Value="Black">
                                                 <Setter Property="WidthRequest" Value="20" />
                                             </Trigger>
-                                        </BoxView.Triggers>-->
+                                        </BoxView.Triggers>
+
                                     </BoxView>
                                 </DataTemplate>
                             </IndicatorView.IndicatorTemplate>
+
                             <!--  Here add the block explained above  -->
+
                         </IndicatorView>
                     </Grid>
                     <CarouselView
@@ -475,7 +506,6 @@
 
                     </StackLayout>
                 </StackLayout>
-
                 <StackLayout
                     Grid.Row="5"
                     BackgroundColor="White"
@@ -487,8 +517,9 @@
                         Text="Meals Nearby"
                         TextColor="{StaticResource ChineseBlack}" />
                     <CollectionView
+                        x:Name="TheCaroView"
                         FlowDirection="LeftToRight"
-                        HeightRequest="280"
+                        HeightRequest="260"
                         ItemsLayout="HorizontalList"
                         ItemsSource="{Binding Meals}"
                         VerticalOptions="Start">
@@ -496,43 +527,128 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Meal">
                                 <controls:MealView
-                                    MImage="{Binding Image}"
+                                    MImage="{Binding Image[0]}"
                                     MName="{Binding Name}"
                                     MPrice="{Binding Price}"
-                                    MRating="{Binding Rating}" />
+                                    MRating="{Binding Rating}">
+                                    <controls:MealView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MealNearby_Tapped" />
+                                    </controls:MealView.GestureRecognizers>
+
+                                </controls:MealView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
-
-
-
-
             </Grid>
         </ScrollView>
-        <Grid Grid.Row="3">
-            <StackLayout
-                Padding="10,15"
-                HorizontalOptions="CenterAndExpand"
-                Orientation="Horizontal"
-                VerticalOptions="Center">
-                <StackLayout
-                    Padding="10,0"
-                    HorizontalOptions="Center"
-                    Spacing="3">
-                    <Label
-                        FontFamily="IIC"
-                        FontSize="22"
-                        HorizontalTextAlignment="Center"
-                        Text="{x:Static Icons:IonicIcons.IosBasket}" />
-                    <Label
-                        FontFamily="GilMedium"
-                        FontSize="17"
-                        HorizontalTextAlignment="Center"
-                        Text="Cart" />
-                </StackLayout>
-            </StackLayout>
 
-        </Grid>
-    </Grid>
+        <pv:PancakeView
+            Padding="0"
+            AbsoluteLayout.LayoutBounds="1,1,1,0.083"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="White"
+            Shadow="{pv:ShadowMarkup Color=Black,
+                                     BlurRadius=5,
+                                     Offset='1,2',
+                                     Opacity=1}"
+            TabIndex="100"
+            WidthRequest="{Binding Source={x:Reference RootPage}, Path=Width}">
+            <Grid
+                Padding="0,10,0,10"
+                BackgroundColor="White"
+                ColumnDefinitions="*,*,*,*,*"
+                ColumnSpacing="0"
+                VerticalOptions="Start">
+                <controls:TabsView
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.MenuDash}"
+                    IsSelected="True"
+                    TabLabel="Explore">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tabbar_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="1"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.Search}"
+                    TabLabel="Search">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tabbar_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="2"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.Deals}"
+                    TabLabel="Deals">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tabbar_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="3"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.Tray}"
+                    TabLabel="Inbox">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tabbar_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="4"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.User}"
+                    TabLabel="Account">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tabbar_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+            </Grid>
+        </pv:PancakeView>
+
+        <!--<BoxView
+            x:Name="FakeProductCell"
+            BackgroundColor="Red"
+            CornerRadius="10"
+            HeightRequest="50"
+            Opacity="0.5"
+            WidthRequest="50" />-->
+
+
+        <pv:PancakeView
+            x:Name="FakePV"
+            BackgroundColor="Blue"
+            CornerRadius="10"
+            IsVisible="False">
+            <Image
+                x:Name="FakeImage"
+                Aspect="AspectFill"
+                HeightRequest="100"
+                Source="food"
+                WidthRequest="100" />
+        </pv:PancakeView>
+
+
+        <controls:MealView x:Name="FakeProductCell" IsVisible="False">
+            <!--<controls:MealView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+            </controls:MealView.GestureRecognizers>-->
+        </controls:MealView>
+        <controls:FIlterView
+            x:Name="TheFilter"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            IsVisible="False" />
+
+        <controls:MealPopup
+            x:Name="MealPopup"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            IsVisible="False" />
+
+    </AbsoluteLayout>
+
 </ContentPage>

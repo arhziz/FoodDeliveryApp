@@ -10,7 +10,7 @@ namespace FoodDeliveryApp
             InitializeComponent();
 
             
-            MainPage = new NavigationPage(new AppShell());
+            MainPage = new AppShell();
 
            
             Sharpnado.Tabs.Initializer.Initialize(false, false);

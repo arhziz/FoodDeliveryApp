@@ -42,6 +42,8 @@ namespace FoodDeliveryApp.Controls
             get => (string)GetValue(MNameProperty);
             set => SetValue(MNameProperty, value);
         }
+
+        
         #endregion
 
 
@@ -60,6 +62,8 @@ namespace FoodDeliveryApp.Controls
         {
             MealImage.Source = newMImage;
         }
+
+        
 
         /// <summary>
         /// MImage
@@ -126,6 +130,50 @@ namespace FoodDeliveryApp.Controls
         #endregion
 
 
+
+
+
+        #region Helper Methods
+        internal void Expand()
+        {
+
+
+            this.TranslateTo(Application.Current.MainPage.Bounds.Left, 0, 500, Easing.Linear);
+           
+            //TheBlocker.IsVisible = true;
+            //Rectangle TheTop = new Rectangle
+            //(
+            //    x: 0,
+            //    y: 0,
+            //    width: Width,
+            //    height: Height
+            //);
+            //AbsoluteLayout.SetLayoutBounds(MealImage, TheTop);
+
+        }
+
+        const int animationSpeed = 500;
+
+        internal async Task ExpandToFill(Rectangle bounds)
+        {
+            var destRect = new Rectangle(
+               x: (bounds.Width / 2) - (this.Width / 2),
+               y: -240,
+               width: this.Width,
+               height: this.Height
+               );
+
+
+            _ = MealImage.TranslateTo(0, 0, animationSpeed * 2);
+            await MealImage.LayoutTo(destRect, animationSpeed * 2, Easing.Linear);
+
+            _ = MealImage.ScaleTo(1.1, animationSpeed * 2);
+            _ = MealImage.TranslateTo(0, 50, animationSpeed * 2);
+            Rectangle expandedBounds = bounds.Inflate(50, 50);
+            await MealImage.LayoutTo(expandedBounds, animationSpeed * 2, Easing.SinInOut);
+            AbsoluteLayout.SetLayoutBounds(this, expandedBounds);
+        }
+        #endregion
 
     }
 }

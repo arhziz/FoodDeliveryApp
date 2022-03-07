@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="FoodDeliveryApp.Controls.TabsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers">
+    <StackLayout
+        HorizontalOptions="CenterAndExpand"
+        Spacing="7"
+        VerticalOptions="Center">
+
+        <Label
+            x:Name="TheIcon"
+            FontFamily="PI"
+            FontSize="22"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="{x:Static Icons:PrimeIcons.MenuDash}"
+            TextColor="Gray"
+            VerticalOptions="Center" />
+        <Label
+            x:Name="TheLabel"
+            FontFamily="GilSemiBold"
+            FontSize="13"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="Cart"
+            TextColor="Gray"
+            VerticalOptions="Center" />
+    </StackLayout>
+
+</ContentView>

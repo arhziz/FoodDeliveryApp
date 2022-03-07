@@ -13,6 +13,10 @@
     <!--<item name="colorPrimaryDark">#1976D2</item>-->
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
-    <!--<item name="colorAccent">#FF4081</item>-->
+    <item name="colorAccent">#37BD6B</item>
+    <!--<item name="android:fitsSystemWindows">true</item>-->
+    <item name="windowActionModeOverlay">true</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:windowTranslucentStatus">true</item>
   </style>
 </resources>

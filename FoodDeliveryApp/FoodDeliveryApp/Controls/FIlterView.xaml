@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="FoodDeliveryApp.Controls.FIlterView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers"
+    xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+    <pv:PancakeView BackgroundColor="White">
+        <Grid RowDefinitions="Auto,*,Auto" RowSpacing="0">
+
+            <!--  Top Section  -->
+            <Label
+                x:Name="CloseFilter"
+                Grid.Row="0"
+                Margin="15"
+                FontFamily="MDI"
+                FontSize="30"
+                HorizontalOptions="Start"
+                Text="{x:Static Icons:MaterialDesignIcons.Close}"
+                TextColor="{StaticResource ChineseBlack}"
+                VerticalOptions="Start">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseFilter_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label
+                Grid.Row="0"
+                Margin="0,5"
+                Padding="15"
+                FontFamily="GilSemiBold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="Filter"
+                TextColor="{StaticResource ChineseBlack}"
+                VerticalOptions="Start"
+                VerticalTextAlignment="Center" />
+            <Label
+                Grid.Row="0"
+                Margin="5"
+                Padding="15"
+                FontFamily="GilMedium"
+                FontSize="18"
+                HorizontalOptions="End"
+                Text="Reset"
+                TextColor="Red"
+                VerticalOptions="Start" />
+            <ScrollView Grid.Row="1" Padding="15,5">
+                <Grid RowDefinitions="Auto,Auto,Auto">
+                    <StackLayout
+                        x:Name="SortByLayout"
+                        Grid.Row="0"
+                        Margin="0,5"
+                        Spacing="5">
+                        <Label
+                            FontFamily="GilBold"
+                            FontSize="18"
+                            Text="Sort By"
+                            TextColor="{StaticResource ChineseBlack}" />
+
+                        <Grid Padding="3" ColumnDefinitions="1*,8*,1*">
+                            <Label
+                                FontFamily="MDI"
+                                FontSize="25"
+                                Text="{x:Static Icons:MaterialDesignIcons.SilverwareVariant}"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                FontSize="18"
+                                Text="Kitchen Nearby"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+
+                            <CheckBox
+                                Grid.Column="2"
+                                VerticalOptions="Center"
+                                Color="{StaticResource Primary}" />
+                        </Grid>
+
+                        <Grid Padding="3" ColumnDefinitions="1*,8*,1*">
+                            <Label
+                                FontFamily="MDI"
+                                FontSize="25"
+                                Text="{x:Static Icons:MaterialDesignIcons.ClockOutline}"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                FontSize="18"
+                                Text="Delivery Time"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+
+                            <CheckBox
+                                Grid.Column="2"
+                                VerticalOptions="Center"
+                                Color="{StaticResource Primary}" />
+                        </Grid>
+                        <Grid Padding="3" ColumnDefinitions="1*,8*,1*">
+                            <Label
+                                FontFamily="MDI"
+                                FontSize="26"
+                                Text="{x:Static Icons:MaterialDesignIcons.StarOutline}"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                FontSize="18"
+                                Text="Rating"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+
+                            <CheckBox
+                                Grid.Column="2"
+                                VerticalOptions="Center"
+                                Color="{StaticResource Primary}" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout
+                        x:Name="PriceRangeLayout"
+                        Grid.Row="1"
+                        Margin="0,20">
+                        <Label
+                            FontFamily="GilBold"
+                            FontSize="18"
+                            Text=" Price Range"
+                            TextColor="{StaticResource ChineseBlack}" />
+
+                        <CollectionView
+                            HeightRequest="80"
+                            ItemsLayout="HorizontalList"
+                            SelectionMode="Single"
+                            VerticalOptions="Start">
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>5$</x:String>
+                                    <x:String>10$</x:String>
+                                    <x:String>100$</x:String>
+                                    <x:String>1000$</x:String>
+                                    <x:String>$$$$</x:String>
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Frame
+                                        Margin="7"
+                                        Padding="0"
+                                        HasShadow="False">
+                                        <pv:PancakeView
+                                            x:Name="theview"
+                                            Margin="0"
+                                            BackgroundColor="Transparent"
+                                            Border="{pv:BorderMarkup Color=LightGray,
+                                                                     Thickness=1}"
+                                            CornerRadius="50"
+                                            HeightRequest="80"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Start"
+                                            WidthRequest="80">
+                                            <!--<pv:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="PriceCollection_Tapped" />
+                                            </pv:PancakeView.GestureRecognizers>-->
+                                            <Label
+                                                x:Name="thelabel"
+                                                FontFamily="GilSemiBold"
+                                                FontSize="19"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding .}"
+                                                TextColor="{StaticResource ChineseBlack}"
+                                                VerticalOptions="Center" />
+
+                                        </pv:PancakeView>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter TargetName="theview" Property="pv:PancakeView.BackgroundColor" Value="{StaticResource Primary}" />
+                                                        <Setter TargetName="thelabel" Property="Label.TextColor" Value="White" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Frame>
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </StackLayout>
+
+                    <StackLayout
+                        x:Name="CategoriesLayout"
+                        Grid.Row="2"
+                        Margin="0,20"
+                        Spacing="10">
+                        <Label
+                            FontFamily="GilBold"
+                            FontSize="19"
+                            Text="Categories"
+                            TextColor="{StaticResource ChineseBlack}" />
+
+                        <Grid
+                            ColumnDefinitions="*,*"
+                            ColumnSpacing="15"
+                            RowDefinitions="*,*"
+                            RowSpacing="15">
+                            <pv:PancakeView
+                                Padding="20"
+                                BackgroundColor="#f1f1f1"
+                                CornerRadius="10"
+                                HorizontalOptions="Fill">
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Cat_Tapped" />
+                                </pv:PancakeView.GestureRecognizers>
+                                <StackLayout>
+                                    <Label
+                                        x:Name="IconLabel"
+                                        FontFamily="MDI"
+                                        FontSize="25"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static Icons:MaterialDesignIcons.Hamburger}"
+                                        TextColor="Gray" />
+                                    <Label
+                                        x:Name="TextLabel"
+                                        FontFamily="MilSemiBold"
+                                        FontSize="18"
+                                        HorizontalOptions="Center"
+                                        Text="Fast Food"
+                                        TextColor="Gray" />
+                                </StackLayout>
+
+                            </pv:PancakeView>
+                            <pv:PancakeView
+                                Grid.Column="1"
+                                Padding="20"
+                                BackgroundColor="#f1f1f1"
+                                CornerRadius="10"
+                                HorizontalOptions="Fill">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="MDI"
+                                        FontSize="25"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static Icons:MaterialDesignIcons.FoodHotDog}"
+                                        TextColor="Gray" />
+                                    <Label
+                                        FontFamily="MilSemiBold"
+                                        FontSize="18"
+                                        HorizontalOptions="Center"
+                                        Text="Wester Food"
+                                        TextColor="Gray" />
+                                </StackLayout>
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Cat_Tapped" />
+                                </pv:PancakeView.GestureRecognizers>
+                            </pv:PancakeView>
+                            <pv:PancakeView
+                                Grid.Row="1"
+                                Padding="20"
+                                BackgroundColor="#f1f1f1"
+                                CornerRadius="10"
+                                HorizontalOptions="Fill">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="MDI"
+                                        FontSize="25"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static Icons:MaterialDesignIcons.FoodDrumstick}"
+                                        TextColor="Gray" />
+                                    <Label
+                                        FontFamily="MilSemiBold"
+                                        FontSize="18"
+                                        HorizontalOptions="Center"
+                                        Text="Beaf and Steak"
+                                        TextColor="Gray" />
+                                </StackLayout>
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Cat_Tapped" />
+                                </pv:PancakeView.GestureRecognizers>
+                            </pv:PancakeView>
+                            <pv:PancakeView
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Padding="20"
+                                BackgroundColor="#f1f1f1"
+                                CornerRadius="10"
+                                HorizontalOptions="Fill">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="MDI"
+                                        FontSize="25"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static Icons:MaterialDesignIcons.FoodVariant}"
+                                        TextColor="Gray" />
+                                    <Label
+                                        FontFamily="MilSemiBold"
+                                        FontSize="18"
+                                        HorizontalOptions="Center"
+                                        Text="Desert Loved"
+                                        TextColor="Gray" />
+                                </StackLayout>
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Cat_Tapped" />
+                                </pv:PancakeView.GestureRecognizers>
+                            </pv:PancakeView>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+
+            <Grid
+                Grid.Row="2"
+                Padding="0"
+                HeightRequest="80">
+                <Frame
+                    Padding="15,10"
+                    HasShadow="False"
+                    VerticalOptions="Start">
+                    <pv:PancakeView
+                        x:Name="ApplyLayout"
+                        Padding="20"
+                        BackgroundColor="{StaticResource Primary}"
+                        CornerRadius="10"
+                        VerticalOptions="Start">
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Apply Filters"
+                            TextColor="White" />
+                    </pv:PancakeView>
+                </Frame>
+
+            </Grid>
+
+        </Grid>
+    </pv:PancakeView>
+</ContentView>

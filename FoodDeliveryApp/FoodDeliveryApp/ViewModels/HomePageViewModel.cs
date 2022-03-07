@@ -1,5 +1,6 @@
 ﻿using FoodDeliveryApp.Models;
 using MvvmHelpers;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace FoodDeliveryApp.ViewModels
@@ -11,6 +12,8 @@ namespace FoodDeliveryApp.ViewModels
         public ObservableCollection<Kitchen> Kitchens { get; set; }
 
         public ObservableCollection<Meal> Meals { get; set; }
+
+
 
         public HomePageViewModel()
         {
@@ -35,9 +38,9 @@ namespace FoodDeliveryApp.ViewModels
 
             //Add to Meals List
 
-            Meals.Add(new Meal { Name = "Chicken Hawaian Pizza", Image = "pizza1", Price = 10.65, Rating= 4.5 });
+            Meals.Add(new Meal { Name = "Chicken Hawaian Pizza", Image = new List<string>() { "pizza1","food" }, Price = 10.65, Rating= 4.5, Description = new List<string>() { "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,", "1. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,", "2. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters," } });
 
-            Meals.Add(new Meal { Name = "SubwaySandwich", Image = "food", Price = 6.05, Rating = 4.5 });
+            Meals.Add(new Meal { Name = "SubwaySandwich", Image = new List<string>() { "food", "pizza1" }, Price = 6.05, Rating = 4.5, Description = new List<string>() { "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,", "1. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,", "2. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters," } });
 
         }
 

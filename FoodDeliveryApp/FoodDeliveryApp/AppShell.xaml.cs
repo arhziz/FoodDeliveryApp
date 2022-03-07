@@ -12,8 +12,9 @@ namespace FoodDeliveryApp
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            //Routing.RegisterRoute(nameof(StartPage), typeof(StartPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(SearchPage), typeof(SearchPage));
+            
 
         }
     }

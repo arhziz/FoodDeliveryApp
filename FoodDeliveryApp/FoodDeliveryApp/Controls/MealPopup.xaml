@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="FoodDeliveryApp.Controls.MealPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers"
+    xmlns:models="clr-namespace:FoodDeliveryApp.Models"
+    xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <Grid
+        BackgroundColor="#ffffff"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <ScrollView>
+            <Grid RowDefinitions="Auto,*">
+                <Button
+                    x:Name="CloseMealPopupBtn"
+                    Margin="15,30"
+                    BackgroundColor="White"
+                    Clicked="CloseMealPopupBtn_Clicked"
+                    CornerRadius="40"
+                    HeightRequest="40"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    WidthRequest="40">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="MDI"
+                            Glyph="{Static Icons:MaterialDesignIcons.ChevronLeft}"
+                            Color="{StaticResource ChineseBlack}" />
+                    </Button.ImageSource>
+                </Button>
+
+                <Button
+                    Margin="15,30"
+                    BackgroundColor="White"
+                    CornerRadius="40"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    WidthRequest="40">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="PI"
+                            Glyph="{Static Icons:PrimeIcons.Bag}"
+                            Size="17"
+                            Color="{StaticResource ChineseBlack}" />
+                    </Button.ImageSource>
+                </Button>
+                <CarouselView
+                    HeightRequest="270"
+                    IndicatorView="indicatorView"
+                    ItemsSource="{Binding Image}"
+                    VerticalOptions="Start">
+                    <!--<CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>food</x:String>
+                            <x:String>sushi</x:String>
+                            <x:String>burger1</x:String>
+                            <x:String>sushi</x:String>
+
+                        </x:Array>
+                    </CarouselView.ItemsSource>-->
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <ScrollView VerticalScrollBarVisibility="Never">
+                                <Image Aspect="AspectFill" Source="{Binding .}" />
+                            </ScrollView>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView
+                    x:Name="indicatorView"
+                    Margin="15"
+                    HorizontalOptions="Center"
+                    IndicatorColor="#90FFFFFF"
+                    IndicatorSize="7"
+                    SelectedIndicatorColor="White"
+                    VerticalOptions="End" />
+                <StackLayout Grid.Row="1">
+                    <StackLayout Padding="15,10">
+                        <Label
+                            FontFamily="GilBold"
+                            FontSize="25"
+                            Text="{Binding Name}"
+                            TextColor="{StaticResource ChineseBlack}" />
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontFamily="GilSemiBold"
+                                        FontSize="20"
+                                        Text="$"
+                                        TextColor="{StaticResource Primary}" />
+                                    <Span Text=" " />
+                                    <Span
+                                        x:Name="CalPrice"
+                                        FontFamily="GilSemiBold"
+                                        FontSize="20"
+                                        Text="{Binding Price}"
+                                        TextColor="{StaticResource Primary}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,0" Padding="15,10">
+
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="22"
+                            Text="Add more items"
+                            TextColor="{StaticResource ChineseBlack}" />
+                        <Grid
+                            Padding="5"
+                            ColumnDefinitions="1*,6*,2*,1*"
+                            ColumnSpacing="10"
+                            HeightRequest="50"
+                            VerticalOptions="Start">
+                            <Frame
+                                Padding="0"
+                                CornerRadius="30"
+                                HasShadow="False"
+                                VerticalOptions="Center">
+                                <Image Source="burger" />
+                            </Frame>
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                FontSize="18"
+                                Text="Pepper julienned"
+                                TextColor="{StaticResource ChineseBlack}"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="2"
+                                FontFamily="GilSemiMedium"
+                                FontSize="18"
+                                HorizontalOptions="Center"
+                                Text="$2.45"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+                            <RadioButton
+                                Grid.Column="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="{StaticResource Primary}"
+                                GroupName="MoreItems"
+                                HorizontalOptions="Center"
+                                IsChecked="true"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid
+                            Padding="5"
+                            ColumnDefinitions="1*,6*,2*,1*"
+                            ColumnSpacing="10"
+                            HeightRequest="50"
+                            VerticalOptions="Start">
+                            <Frame
+                                Padding="0"
+                                CornerRadius="30"
+                                HasShadow="False"
+                                VerticalOptions="Center">
+                                <Image Source="burger" />
+                            </Frame>
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                FontSize="18"
+                                Text="Baby Spinach"
+                                TextColor="{StaticResource ChineseBlack}"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="2"
+                                FontFamily="GilSemiMedium"
+                                FontSize="18"
+                                HorizontalOptions="Center"
+                                Text="$2.45"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+                            <RadioButton
+                                Grid.Column="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="{StaticResource Primary}"
+                                GroupName="MoreItems"
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid
+                            Padding="5"
+                            ColumnDefinitions="1*,6*,2*,1*"
+                            ColumnSpacing="10"
+                            HeightRequest="50"
+                            VerticalOptions="Start">
+                            <Frame
+                                Padding="0"
+                                CornerRadius="30"
+                                HasShadow="False"
+                                VerticalOptions="Center">
+                                <Image Source="burger" />
+                            </Frame>
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="GilSemiBold"
+                                FontSize="18"
+                                Text="Mushroom"
+                                TextColor="{StaticResource ChineseBlack}"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="2"
+                                FontFamily="GilSemiMedium"
+                                FontSize="18"
+                                HorizontalOptions="Center"
+                                Text="$2.45"
+                                TextColor="Gray"
+                                VerticalOptions="Center" />
+                            <RadioButton
+                                Grid.Column="3"
+                                BackgroundColor="Transparent"
+                                BorderColor="{StaticResource Primary}"
+                                GroupName="MoreItems"
+                                HorizontalOptions="Center"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,10,0,0" Padding="15,10,15,0">
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="19"
+                            Text="Description"
+                            TextColor="{StaticResource ChineseBlack}" />
+
+
+                        <StackLayout
+                            Margin="0,10,0,0"
+                            BindableLayout.ItemsSource="{Binding Description}"
+                            Spacing="13">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label
+                                        FontFamily="GilMedium"
+                                        FontSize="18"
+                                        Text="{Binding .}"
+                                        TextColor="Gray" />
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+
+
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+
+        <pv:PancakeView
+            Grid.Row="1"
+            Padding="15,10"
+            xct:ShadowEffect.Color="Black"
+            xct:ShadowEffect.OffsetX="0"
+            xct:ShadowEffect.OffsetY="-2"
+            xct:ShadowEffect.Opacity="0.6"
+            xct:ShadowEffect.Radius="1">
+            <Grid Padding="10,0" ColumnDefinitions="4*,6*">
+                <pv:PancakeView
+                    Padding="5,10"
+                    Border="{pv:BorderMarkup Color=#33808080,
+                                             Thickness=1}"
+                    CornerRadius="10">
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                        <Button
+                            x:Name="DecreaseCount"
+                            BackgroundColor="#33808080"
+                            Clicked="DecreaseCount_Clicked"
+                            CornerRadius="40"
+                            HeightRequest="30"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="MDI"
+                                    Glyph="{Static Icons:MaterialDesignIcons.Minus}"
+                                    Size="18"
+                                    Color="Gray" />
+                            </Button.ImageSource>
+                        </Button>
+                        <Label
+                            x:Name="CountLabel"
+                            FontFamily="GilSemiBold"
+                            FontSize="22"
+                            Text="1"
+                            TextColor="{StaticResource ChineseBlack}"
+                            VerticalOptions="Center" />
+                        <Button
+                            x:Name="IncreaseCount"
+                            BackgroundColor="{StaticResource Primary}"
+                            Clicked="IncreaseCount_Clicked"
+                            CornerRadius="40"
+                            HeightRequest="30"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="MDI"
+                                    Glyph="{Static Icons:MaterialDesignIcons.Plus}"
+                                    Size="18"
+                                    Color="White" />
+                            </Button.ImageSource>
+                        </Button>
+                    </StackLayout>
+                </pv:PancakeView>
+
+                <pv:PancakeView
+                    Grid.Column="1"
+                    Margin="0"
+                    Padding="15,10"
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="10"
+                    HorizontalOptions="Fill">
+                    <StackLayout
+                        Margin="10,0"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        VerticalOptions="Center">
+                        <Label
+                            FontFamily="MDI"
+                            FontSize="18"
+                            Text="{Static Icons:MaterialDesignIcons.BasketOutline}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="18"
+                            Text="Add To Cart"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </pv:PancakeView>
+            </Grid>
+        </pv:PancakeView>
+
+    </Grid>
+</ContentView>

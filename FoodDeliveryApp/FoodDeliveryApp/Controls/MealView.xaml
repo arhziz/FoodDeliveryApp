@@ -152,6 +152,11 @@
                     </Grid>
 
                 </StackLayout>
+                <BoxView
+                    x:Name="TheBlocker"
+                    Grid.RowSpan="2"
+                    BackgroundColor="White"
+                    IsVisible="False" />
             </Grid>
         </pv:PancakeView>
     </Frame>

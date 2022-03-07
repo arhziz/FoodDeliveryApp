@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FoodDeliveryApp.Views.SearchPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Icons="clr-namespace:FoodDeliveryApp.Helpers"
+    xmlns:controls="clr-namespace:FoodDeliveryApp.Controls"
+    xmlns:effects="clr-namespace:FoodDeliveryApp.CustomRenderer"
+    xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="RootPage"
+    Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <StackLayout
+            Grid.Row="0"
+            Padding="20"
+            Spacing="20">
+            <Label
+                FontFamily="GilBold"
+                FontSize="23"
+                Text="Search"
+                TextColor="{StaticResource ChineseBlack}" />
+            <Frame
+                Padding="10,5"
+                BackgroundColor="#f1f1f1"
+                CornerRadius="10"
+                HasShadow="False">
+                <StackLayout Orientation="Horizontal" Spacing="1">
+                    <Label
+                        FontFamily="PI"
+                        FontSize="20"
+                        Text="{Static Icons:PrimeIcons.Search}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Entry
+                        FontFamily="GilSemiBold"
+                        Placeholder="Search"
+                        PlaceholderColor="Black"
+                        VerticalOptions="Center">
+                        <Entry.Effects>
+                            <effects:CustomEntry />
+                        </Entry.Effects>
+                    </Entry>
+                </StackLayout>
+
+
+            </Frame>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Spacing="10">
+                <ScrollView Padding="20,10" Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="19"
+                            Text="All Items"
+                            TextColor="{StaticResource ChineseBlack}" />
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="19"
+                            Text="Popular Items"
+                            TextColor="Gray" />
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="19"
+                            Text="All Kitchen"
+                            TextColor="Gray" />
+                        <Label
+                            FontFamily="GilSemiBold"
+                            FontSize="19"
+                            Text="Popular Kitchen"
+                            TextColor="Gray" />
+                    </StackLayout>
+                </ScrollView>
+                <FlexLayout
+                    Padding="10,20"
+                    AlignContent="SpaceBetween"
+                    AlignItems="Center"
+                    Direction="Row"
+                    FlowDirection="LeftToRight"
+                    JustifyContent="Center"
+                    Wrap="Wrap">
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="1.5"
+                                Source="food" />
+                            <BoxView BackgroundColor="Black" Opacity="0.3" />
+                            <Label
+                                FontFamily="GilBold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Fish Fry"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="1.5"
+                                Source="sushi" />
+                            <BoxView BackgroundColor="Black" Opacity="0.3" />
+                            <Label
+                                FontFamily="GilBold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Fish Grill"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="1.5"
+                                Source="food" />
+                            <BoxView BackgroundColor="Black" Opacity="0.3" />
+                            <Label
+                                FontFamily="GilBold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Fruit Juice"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="1.5"
+                                Source="food" />
+                            <BoxView BackgroundColor="Black" Opacity="0.3" />
+                            <Label
+                                FontFamily="GilBold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Cake"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="1.5"
+                                Source="burger1" />
+                            <BoxView BackgroundColor="Black" Opacity="0.3" />
+                            <Label
+                                FontFamily="GilBold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Burger"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        Margin="5"
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        HeightRequest="170"
+                        WidthRequest="170">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="1.5"
+                                Source="food" />
+                            <BoxView BackgroundColor="Black" Opacity="0.3" />
+                            <Label
+                                FontFamily="GilBold"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                Text="Sandwich"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+        <pv:PancakeView
+            Grid.Row="2"
+            Padding="0"
+            BackgroundColor="White"
+            HeightRequest="65"
+            Shadow="{pv:ShadowMarkup Color=Black,
+                                     BlurRadius=5,
+                                     Offset='1,2',
+                                     Opacity=1}"
+            TabIndex="100"
+            WidthRequest="{Binding Source={x:Reference RootPage}, Path=Width}">
+            <Grid
+                Padding="0,10,0,10"
+                BackgroundColor="White"
+                ColumnDefinitions="*,*,*,*,*"
+                ColumnSpacing="0"
+                VerticalOptions="Start">
+                <controls:TabsView
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.MenuDash}"
+                    TabLabel="Explore">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchNav_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="1"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.Search}"
+                    IsSelected="True"
+                    TabLabel="Search">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchNav_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="2"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.Deals}"
+                    TabLabel="Deals">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchNav_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="3"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.Tray}"
+                    TabLabel="Inbox">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchNav_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+                <controls:TabsView
+                    Grid.Column="4"
+                    IconFamily="PI"
+                    IconText="{x:Static Icons:PrimeIcons.User}"
+                    TabLabel="Account">
+                    <controls:TabsView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SearchNav_Tapped" />
+                    </controls:TabsView.GestureRecognizers>
+                </controls:TabsView>
+            </Grid>
+        </pv:PancakeView>
+    </Grid>
+</ContentPage>

@@ -8,10 +8,12 @@ namespace FoodDeliveryApp.Models
     {
         public string Name { get; set; }
 
-        public string Image { get; set; }
+        public List<string> Image { get; set; }
 
         public double Price { get; set; }
 
         public double Rating { get; set; }
+
+        public List<string> Description { get; set; }
     }
 }
